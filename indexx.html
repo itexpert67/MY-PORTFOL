@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farooq Shah - Data Scientist & ML Engineer</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./assets/images/farooq.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #0a0e27;
+            --bg-card: #111633;
+            --bg-hover: #1a1f47;
+            --accent-primary: #00f0ff;
+            --accent-secondary: #7c3aed;
+            --text-primary: #ffffff;
+            --text-secondary: #a0aec0;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Animated Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(124, 58, 237, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 240, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Header */
+        header {
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .profile-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            margin-bottom: 40px;
+        }
+        
+        .profile-img-wrapper {
+            position: relative;
+            width: 200px;
+            height: 200px;
+        }
+        
+        .profile-img-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: -5px;
+            background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 50%;
+            animation: rotate 4s linear infinite;
+            z-index: -1;
+        }
+        
+        @keyframes rotate {
+            100% { transform: rotate(360deg); }
+        }
+        
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--bg-dark);
+        }
+        
+        .profile-info {
+            text-align: left;
+        }
+        
+        h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: 64px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .role {
+            font-size: 24px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+        
+        .contact-info {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .contact-item a {
+            color: var(--accent-primary);
+            text-decoration: none;
+        }
+        
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px 0;
+            position: sticky;
+            top: 20px;
+            background: rgba(17, 22, 51, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            padding: 15px 30px;
+            z-index: 100;
+            max-width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: var(--accent-primary);
+        }
+        
+        nav a.active {
+            color: var(--accent-primary);
+        }
+        
+        /* Sections */
+        section {
+            margin-bottom: 100px;
+        }
+        
+        .section-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 2px;
+        }
+        
+        /* About Section */
+        .about-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 900px;
+        }
+        
+        .about-content p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .service-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 35px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 240, 255, 0.05), rgba(124, 58, 237, 0.05));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-primary);
+            box-shadow: 0 20px 60px rgba(0, 240, 255, 0.2);
+        }
+        
+        .service-card:hover::before {
+            opacity: 1;
+        }
+        
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            object-fit: cover;
+        }
+        
+        .service-card h4 {
+            font-family: 'Syne', sans-serif;
+            font-size: 20px;
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .service-card p {
+            color: var(--text-secondary);
+            font-size: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Skills */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .skill-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            padding: 25px;
+        }
+        
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        
+        .skill-name {
+            font-weight: 600;
+            font-size: 16px;
+        }
+        
+        .skill-percent {
+            color: var(--accent-primary);
+            font-weight: 600;
+        }
+        
+        .skill-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 10px;
+            transition: width 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .portfolio-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s;
+            cursor: pointer;
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 240, 255, 0.15);
+        }
+        
+        .portfolio-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+        
+        .portfolio-content {
+            padding: 25px;
+        }
+        
+        .portfolio-category {
+            display: inline-block;
+            padding: 5px 15px;
+            background: rgba(0, 240, 255, 0.1);
+            color: var(--accent-primary);
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+        
+        .portfolio-item h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .portfolio-item a {
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+        
+        /* Testimonials */
+        .testimonials-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 35px;
+            position: relative;
+        }
+        
+        .quote-icon {
+            font-size: 48px;
+            color: var(--accent-primary);
+            opacity: 0.2;
+            position: absolute;
+            top: 20px;
+            right: 30px;
+        }
+        
+        .testimonial-text {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .author-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+        
+        .author-name {
+            font-weight: 600;
+            font-size: 16px;
+        }
+        
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--accent-primary), var(--accent-secondary));
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -46px;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent-primary);
+            box-shadow: 0 0 0 4px var(--bg-dark), 0 0 0 6px var(--accent-primary);
+        }
+        
+        .timeline-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            padding: 25px;
+        }
+        
+        .timeline-period {
+            color: var(--accent-primary);
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .timeline-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+        
+        .timeline-description {
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 60px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 100px;
+        }
+        
+        footer p {
+            color: var(--text-secondary);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            h1 {
+                font-size: 42px;
+            }
+            
+            .profile-section {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .profile-info {
+                text-align: center;
+            }
+            
+            .contact-info {
+                justify-content: center;
+            }
+            
+            nav {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .portfolio-grid,
+            .services-grid,
+            .testimonials-container,
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Fade-in Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeIn 0.8s forwards;
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="#about" class="active">About</a>
+        <a href="#services">Services</a>
+        <a href="#skills">Skills</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#experience">Experience</a>
+        <a href="#testimonials">Testimonials</a>
+    </nav>
+    
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="profile-section">
+                <div class="profile-img-wrapper">
+                   <img src="./assets/images/farooq.png" alt="Farooq Shah" class="profile-img">
+                </div>
+                <div class="profile-info">
+                    <h1>Farooq Shah</h1>
+                    <p class="role">Data Scientist & ML Engineer</p>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            📧 <a href="/cdn-cgi/l/email-protection#422a233b2336312a232a2f737702252f232b2e6c212d2f"><span class="__cf_email__" data-cfemail="1b737a627a6f68737a73762a2e5b7c767a727735787476">[email&#160;protected]</span></a>
+                        </div>
+                        <div class="contact-item">
+                            📞 <a href="tel:+923708017350">+92 370 8017350</a>
+                        </div>
+                        <div class="contact-item">
+                            📍 Abbottabad, KPK, Pakistan
+                        </div>
+                        <div class="contact-item">
+                            🎂 Jan 01, 2002
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <!-- About Section -->
+        <section id="about">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <p>
+                    I'm a Data Scientist and Machine Learning Engineer currently pursuing BS in Sociology at Hazara University. 
+                    I specialize in turning data into actionable insights through analytics, machine learning, and AI automation. 
+                    I've worked as a Research Assistant and Data Analyst Intern at Hazara University, and I freelance on Upwork helping clients solve real-world business problems with data. 
+                    My focus areas include data analytics, machine learning models, computer vision, generative AI, and deploying ML solutions to the cloud.
+                </p>
+            </div>
+        </section>
+        
+        <!-- Services Section -->
+        <section id="services">
+            <h2 class="section-title">What I Do</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="./assets/images/data analysis.jpg" alt="Data Analytics" class="service-icon">
+                    <h4>Data Analytics</h4>
+                    <p>One of my favorite part of the project is Data Analysis. I Analyze the Data and solve complex problems with it.</p>
+                </div>
+                
+                <div class="service-card">
+                    <img src="./assets/images/machine.jpeg" alt="Machine Learning" class="service-icon">
+                    <h4>Machine Learning</h4>
+                    <p>I train AI models with best accuracy, remove robustness and overfitting from the trained model.</p>
+                </div>
+                
+                <div class="service-card">
+                    <img src="./assets/images/computer.jpeg" alt="Computer Vision" class="service-icon">
+                    <h4>Computer Vision</h4>
+                    <p>I give vision power to AI Technologies.</p>
+                </div>
+                
+                <div class="service-card">
+                    <img src="./assets/images/generative.jpeg" alt="Generative AI" class="service-icon">
+                    <h4>Generative AI</h4>
+                    <p>I made LLMs fine tuned, and build functional AI Apps for special purposes and Business needs.</p>
+                </div>
+                
+                <div class="service-card">
+                    <img src="./assets/images/agents.png" alt="AI Agents" class="service-icon">
+                    <h4>AI Agents Development</h4>
+                    <p>I build AI Agents for saving the time taken by humans on repetitive and logical tasks.</p>
+                </div>
+                
+                <div class="service-card">
+                    <img src="./assets/images/generative.jpeg" alt="AI Automation" class="service-icon">
+                    <h4>AI Automation</h4>
+                    <p>I Automate tasks with AI that are repetitive and time consuming.</p>
+                </div>
+                
+                <div class="service-card">
+                    <img src="./assets/images/mlops.jpeg" alt="MLOps" class="service-icon">
+                    <h4>MLOps</h4>
+                    <p>I deploy your AI model on AWS cloud services.</p>
+                </div>
+                
+                <div class="service-card">
+                    <img src="./assets/images/consultancy.jpeg" alt="Consultancy" class="service-icon">
+                    <h4>Consultancy</h4>
+                    <p>Provide Consultancy to my clients about solving their business problems through data provided by them.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2 class="section-title">My Skills</h2>
+            <div class="skills-container">
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">Data Analytics</span>
+                        <span class="skill-percent">80%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 80%"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">Machine Learning</span>
+                        <span class="skill-percent">70%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 70%"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">Data Visualization</span>
+                        <span class="skill-percent">90%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 90%"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">Computer Vision</span>
+                        <span class="skill-percent">50%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 50%"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">Generative AI</span>
+                        <span class="skill-percent">50%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 50%"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">AI Automation</span>
+                        <span class="skill-percent">50%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 50%"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">AI Agents Development</span>
+                        <span class="skill-percent">50%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 50%"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">MLOps</span>
+                        <span class="skill-percent">50%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 50%"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Portfolio Section -->
+        <section id="portfolio">
+            <h2 class="section-title">Portfolio</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Cdefs%3E%3ClinearGradient id='bg1' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23111633'/%3E%3Cstop offset='100%25' style='stop-color:%230a0e27'/%3E%3C/linearGradient%3E%3ClinearGradient id='accent1' x1='0%25' y1='0%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' style='stop-color:%2300f0ff'/%3E%3Cstop offset='100%25' style='stop-color:%237c3aed'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='400' height='300' fill='url(%23bg1)'/%3E%3Cg transform='translate(200,150)'%3E%3Crect x='-60' y='-80' width='30' height='120' fill='url(%23accent1)' opacity='0.3' rx='4'/%3E%3Crect x='-20' y='-100' width='30' height='140' fill='url(%23accent1)' opacity='0.5' rx='4'/%3E%3Crect x='20' y='-60' width='30' height='100' fill='url(%23accent1)' opacity='0.7' rx='4'/%3E%3Ccircle cx='-45' cy='-80' r='6' fill='%2300f0ff'/%3E%3Ccircle cx='-5' cy='-100' r='6' fill='%2300f0ff'/%3E%3Ccircle cx='35' cy='-60' r='6' fill='%2300f0ff'/%3E%3Cpath d='M -45,-80 L -5,-100 L 35,-60' stroke='%2300f0ff' stroke-width='2' fill='none' opacity='0.5'/%3E%3C/g%3E%3Ctext x='200' y='250' font-family='sans-serif' font-size='20' fill='%23ffffff' text-anchor='middle' font-weight='600'%3EData Analytics%3C/text%3E%3C/svg%3E" alt="Week 1 Project" class="portfolio-img">
+                    <div class="portfolio-content">
+                        <span class="portfolio-category">Data Analytics</span>
+                        <h3><a href="https://github.com/itexpert67/devsil-mentorship/tree/main/week%2001">Week 1 Project</a></h3>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item">
+                    <<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Cdefs%3E%3ClinearGradient id='bg2' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23111633'/%3E%3Cstop offset='100%25' style='stop-color:%230a0e27'/%3E%3C/linearGradient%3E%3ClinearGradient id='phone' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2300f0ff'/%3E%3Cstop offset='100%25' style='stop-color:%237c3aed'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='400' height='300' fill='url(%23bg2)'/%3E%3Cg transform='translate(200,150)'%3E%3Crect x='-40' y='-90' width='80' height='140' rx='12' fill='none' stroke='url(%23phone)' stroke-width='3'/%3E%3Crect x='-35' y='-80' width='70' height='110' rx='4' fill='%231a1f47' opacity='0.8'/%3E%3Ccircle cx='0' cy='35' r='8' fill='none' stroke='%2300f0ff' stroke-width='2'/%3E%3Ctext x='0' y='-60' font-family='sans-serif' font-size='28' fill='%2300f0ff' text-anchor='middle'%3E%24%3C/text%3E%3Ctext x='0' y='-30' font-family='sans-serif' font-size='16' fill='%237c3aed' text-anchor='middle'%3E999%3C/text%3E%3C/g%3E%3Ctext x='200' y='250' font-family='sans-serif' font-size='20' fill='%23ffffff' text-anchor='middle' font-weight='600'%3EMobile Pricing%3C/text%3E%3C/svg%3E" alt="Mobile Brands Analysis" class="portfolio-img">
+                    <div class="portfolio-content">
+                        <span class="portfolio-category">Data Analytics</span>
+                        <h3><a href="https://github.com/itexpert67/devsil-mentorship/tree/main/week%2002">Mobile Brands Prices Analysis</a></h3>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item">
+                   <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Cdefs%3E%3ClinearGradient id='bg3' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23111633'/%3E%3Cstop offset='100%25' style='stop-color:%230a0e27'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='400' height='300' fill='url(%23bg3)'/%3E%3Cg transform='translate(100,80)'%3E%3Crect x='0' y='0' width='60' height='60' rx='12' fill='%2300f0ff' opacity='0.3'/%3E%3Ctext x='30' y='40' font-family='sans-serif' font-size='32' fill='%2300f0ff' text-anchor='middle'%3E★%3C/text%3E%3Crect x='80' y='0' width='60' height='60' rx='12' fill='%237c3aed' opacity='0.3'/%3E%3Ctext x='110' y='40' font-family='sans-serif' font-size='32' fill='%237c3aed' text-anchor='middle'%3E★%3C/text%3E%3Crect x='160' y='0' width='60' height='60' rx='12' fill='%2300f0ff' opacity='0.3'/%3E%3Ctext x='190' y='40' font-family='sans-serif' font-size='32' fill='%2300f0ff' text-anchor='middle'%3E★%3C/text%3E%3Crect x='0' y='80' width='60' height='60' rx='12' fill='%237c3aed' opacity='0.3'/%3E%3Ctext x='30' y='120' font-family='sans-serif' font-size='32' fill='%237c3aed' text-anchor='middle'%3E★%3C/text%3E%3Crect x='80' y='80' width='60' height='60' rx='12' fill='%2300f0ff' opacity='0.3'/%3E%3Ctext x='110' y='120' font-family='sans-serif' font-size='32' fill='%2300f0ff' text-anchor='middle'%3E★%3C/text%3E%3Crect x='160' y='80' width='60' height='60' rx='12' fill='%237c3aed' opacity='0.3'/%3E%3Ctext x='190' y='120' font-family='sans-serif' font-size='32' fill='%237c3aed' text-anchor='middle'%3E★%3C/text%3E%3C/g%3E%3Ctext x='200' y='250' font-family='sans-serif' font-size='20' fill='%23ffffff' text-anchor='middle' font-weight='600'%3EApp Ratings%3C/text%3E%3C/svg%3E" alt="Apps Data" class="portfolio-img">
+                    <div class="portfolio-content">
+                        <span class="portfolio-category">Data Analytics</span>
+                        <h3><a href="https://github.com/itexpert67/devsil-mentorship/tree/main/week%2003">Apps Prices and Ratings</a></h3>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item">
+                   <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Cdefs%3E%3ClinearGradient id='bg4' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23111633'/%3E%3Cstop offset='100%25' style='stop-color:%230a0e27'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='400' height='300' fill='url(%23bg4)'/%3E%3Cg transform='translate(200,150)'%3E%3Ccircle cx='0' cy='0' r='50' fill='%237c3aed' opacity='0.3'/%3E%3Ccircle cx='0' cy='0' r='35' fill='%237c3aed' opacity='0.5'/%3E%3Ccircle cx='50' cy='0' r='8' fill='%2300f0ff'/%3E%3Ccircle cx='-50' cy='0' r='8' fill='%2300f0ff'/%3E%3Ccircle cx='0' cy='50' r='8' fill='%2300f0ff'/%3E%3Ccircle cx='0' cy='-50' r='8' fill='%2300f0ff'/%3E%3Ccircle cx='35' cy='35' r='6' fill='%237c3aed'/%3E%3Ccircle cx='-35' cy='35' r='6' fill='%237c3aed'/%3E%3Ccircle cx='35' cy='-35' r='6' fill='%237c3aed'/%3E%3Ccircle cx='-35' cy='-35' r='6' fill='%237c3aed'/%3E%3Cpath d='M -70,-70 L 70,70 M -70,70 L 70,-70' stroke='%2300f0ff' stroke-width='2' opacity='0.2'/%3E%3C/g%3E%3Ctext x='200' y='250' font-family='sans-serif' font-size='20' fill='%23ffffff' text-anchor='middle' font-weight='600'%3ECOVID-19 Data%3C/text%3E%3C/svg%3E" alt="COVID-19 Dataset" class="portfolio-img">
+                    <div class="portfolio-content">
+                        <span class="portfolio-category">Machine Learning</span>
+                        <h3><a href="https://github.com/itexpert67/devsil-mentorship/tree/main/week%2004">COVID-19 Country-wise Cleaned Dataset</a></h3>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Cdefs%3E%3ClinearGradient id='bg5' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23111633'/%3E%3Cstop offset='100%25' style='stop-color:%230a0e27'/%3E%3C/linearGradient%3E%3ClinearGradient id='heart' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2300f0ff'/%3E%3Cstop offset='100%25' style='stop-color:%237c3aed'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='400' height='300' fill='url(%23bg5)'/%3E%3Cg transform='translate(200,140)'%3E%3Cpath d='M 0,20 C -20,0 -40,0 -50,15 C -60,30 -50,50 0,80 C 50,50 60,30 50,15 C 40,0 20,0 0,20 Z' fill='url(%23heart)' opacity='0.4'/%3E%3Cpath d='M -15,35 L -5,45 L 5,35' stroke='%2300f0ff' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M -35,20 Q -30,15 -25,20 T -15,20' stroke='%2300f0ff' stroke-width='2' fill='none' opacity='0.6'/%3E%3Cpath d='M 15,20 Q 20,15 25,20 T 35,20' stroke='%237c3aed' stroke-width='2' fill='none' opacity='0.6'/%3E%3C/g%3E%3Ctext x='200' y='250' font-family='sans-serif' font-size='20' fill='%23ffffff' text-anchor='middle' font-weight='600'%3EHeart Health Data%3C/text%3E%3C/svg%3E" alt="Heart Diseases" class="portfolio-img">
+                    <div class="portfolio-content">
+                        <span class="portfolio-category">Data Analytics</span>
+                        <h3><a href="https://github.com/itexpert67/devsil-mentorship/tree/main/week%2005">Heart Diseases Cleaned Dataset</a></h3>
+                    </div>
+                </div>
+
+
+                <div class="portfolio-item">
+                     <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Cdefs%3E%3ClinearGradient id='bg6' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23111633'/%3E%3Cstop offset='100%25' style='stop-color:%230a0e27'/%3E%3C/linearGradient%3E%3ClinearGradient id='tbm' x1='0%25' y1='0%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' style='stop-color:%2300f0ff'/%3E%3Cstop offset='100%25' style='stop-color:%237c3aed'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='400' height='300' fill='url(%23bg6)'/%3E%3Cg transform='translate(200,150)'%3E%3Ccircle cx='0' cy='0' r='60' fill='none' stroke='url(%23tbm)' stroke-width='4' opacity='0.5'/%3E%3Ccircle cx='0' cy='0' r='45' fill='none' stroke='%2300f0ff' stroke-width='2' opacity='0.3'/%3E%3Ccircle cx='0' cy='0' r='30' fill='none' stroke='%237c3aed' stroke-width='2' opacity='0.3'/%3E%3Cpath d='M -50,-10 L -80,-10 M -50,10 L -80,10 M 50,-10 L 80,-10 M 50,10 L 80,10' stroke='%2300f0ff' stroke-width='3' opacity='0.6'/%3E%3Ccircle cx='0' cy='0' r='8' fill='%2300f0ff'/%3E%3Cpath d='M -15,-15 L 15,15 M -15,15 L 15,-15' stroke='%237c3aed' stroke-width='2'/%3E%3Ctext x='0' y='80' font-family='monospace' font-size='14' fill='%2300f0ff' text-anchor='middle'%3E[ ML ]%3C/text%3E%3C/g%3E%3Ctext x='200' y='250' font-family='sans-serif' font-size='20' fill='%23ffffff' text-anchor='middle' font-weight='600'%3ETBM Optimization%3C/text%3E%3C/svg%3E" alt="TBM Penetration Rate" class="portfolio-img">
+                          <div class="portfolio-content">
+                              <span class="portfolio-category">Machine Learning</span>
+                         <h3><a href="https://github.com/itexpert67/devsil-mentorship/tree/main/week%2006">TBM Penetration Rate Optimization</a></h3>
+             </div>
+                    
+            </div>
+        </section>
+        
+        <!-- Experience Section -->
+        <section id="experience">
+            <h2 class="section-title">Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-period">Jan 2025 – May 2025</div>
+                        <h3 class="timeline-title">Research Assistant – Hazara University</h3>
+                        <p class="timeline-description">
+                            Assisted faculty in collecting and analyzing social survey data.
+                            Used Python and Excel to clean datasets and prepare summary reports.
+                            Contributed to drafting research papers on local social behaviors and trends.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-period">Jun 2025 – Aug 2025</div>
+                        <h3 class="timeline-title">Data Analyst Intern – Hazara University</h3>
+                        <p class="timeline-description">
+                            Worked on quantitative analysis for student attendance and academic performance.
+                            Applied statistical methods to identify trends and patterns in student data.
+                            Presented findings to department staff to support decision-making.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-period">Sep 2025 – Dec 2025</div>
+                        <h3 class="timeline-title">Sociology Research Project – Hazara University</h3>
+                        <p class="timeline-description">
+                            Conducted a project on social behavior in urban communities using surveys and interviews.
+                            Organized and visualized data using Python (pandas, matplotlib) and Excel.
+                            Developed reports linking sociological theory with empirical results.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Testimonials Section -->
+        <section id="testimonials">
+            <h2 class="section-title">Testimonials</h2>
+            <div class="testimonials-container">
+                <div class="testimonial-card">
+                    <div class="quote-icon">"</div>
+                    <p class="testimonial-text">
+                        Farooq's ability to turn raw data into actionable insights is truly impressive.
+                        He handled our data preprocessing and analysis with precision and produced results that directly impacted our business decisions.
+                        His dedication and technical expertise made a complex task look simple.
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="./assets/images/avatar-1.png" alt="Maaz Ali" class="author-img">
+                        <div>
+                            <div class="author-name">Maaz Ali</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="quote-icon">"</div>
+                    <p class="testimonial-text">
+                        When it comes to end-to-end data solutions, Farooq is the go-to professional.
+                        I worked with him on a project requiring data modeling and deployment, and I was amazed by how smoothly the process went.
+                        His ability to navigate challenges and deliver on time, all while maintaining high-quality standards, made him an indispensable part of our team.
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="./assets/images/avatar-2.png" alt="Jessica Miller" class="author-img">
+                        <div>
+                            <div class="author-name">Jessica Miller</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="quote-icon">"</div>
+                    <p class="testimonial-text">
+                        Our collaboration with Farooq was a game-changer.
+                        He not only brought strong technical skills but also a deep understanding of how to make data work for our business.
+                        His ability to create seamless data pipelines saved us countless hours, and his clear communication made the entire project stress-free.
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="./assets/images/avatar-3.png" alt="Emily Evans" class="author-img">
+                        <div>
+                            <div class="author-name">Emily Evans</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="quote-icon">"</div>
+                    <p class="testimonial-text">
+                        I've worked with several data professionals, but Farooq stands out for his holistic approach.
+                        He didn't just provide data models; he ensured they were fully integrated into our system, ready to be used.
+                        His attention to detail and commitment to delivering exceptional work have set a new standard for our future collaborations.
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="./assets/images/avatar-4.png" alt="Henry William" class="author-img">
+                        <div>
+                            <div class="author-name">Henry William</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2026 Farooq Shah. All rights reserved.</p>
+        </footer>
+    </div>
+    
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Smooth scroll for navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const section = document.querySelector(this.getAttribute('href'));
+                section.scrollIntoView({ behavior: 'smooth' });
+                
+                // Update active state
+                document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+        
+        // Animate skills on scroll
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progress = entry.target.querySelector('.skill-progress');
+                    if (progress) {
+                        progress.style.width = progress.styl
