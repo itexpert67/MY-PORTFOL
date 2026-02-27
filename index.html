@@ -1,649 +1,697 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Farooq Shah - Data Scientist & ML Engineer</title>
-    
-    <link rel="icon" type="image/png" href="./assets/images/farooq.png">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --bg-dark: #0d0d0d;
-            --bg-card: #141414;
-            --bg-hover: #1a1a1a;
-            --accent: #ffffff;
-            --text-primary: #ffffff;
-            --text-secondary: #888888;
-            --border: rgba(255, 255, 255, 0.08);
-        }
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farooq Shah — Data Scientist & ML Engineer</title>
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+  <link rel="shortcut icon" href="./assets/images/farooq .jpeg" type="image/x-icon">
+  <link rel="stylesheet" href="./assets/css/style.css">
 
-        body {
-            font-family: 'DM Sans', sans-serif;
-            background: var(--bg-dark);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 0 40px;
-        }
-
-        /* NAV */
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 32px;
-            position: sticky;
-            top: 20px;
-            z-index: 100;
-            background: rgba(13,13,13,0.9);
-            backdrop-filter: blur(16px);
-            border: 1px solid var(--border);
-            border-radius: 50px;
-            padding: 14px 32px;
-            max-width: fit-content;
-            margin: 30px auto 0;
-        }
-
-        nav a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 15px;
-            transition: color 0.2s;
-        }
-
-        nav a:hover, nav a.active { color: #fff; }
-
-        /* HEADER */
-        header { padding: 80px 0 60px; }
-
-        .profile-section {
-            display: flex;
-            align-items: center;
-            gap: 60px;
-        }
-
-        .profile-img-wrapper {
-            position: relative;
-            width: 180px;
-            height: 180px;
-            flex-shrink: 0;
-        }
-
-        .profile-img-wrapper::before {
-            content: '';
-            position: absolute;
-            inset: -2px;
-            border-radius: 50%;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .profile-img {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        h1 {
-            font-family: 'Syne', sans-serif;
-            font-size: 58px;
-            font-weight: 700;
-            line-height: 1.1;
-            color: #fff;
-            margin-bottom: 10px;
-        }
-
-        .role {
-            font-size: 18px;
-            color: var(--text-secondary);
-            margin-bottom: 24px;
-        }
-
-        .contact-info { display: flex; gap: 20px; flex-wrap: wrap; }
-
-        .contact-item {
-            font-size: 13px;
-            color: var(--text-secondary);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .contact-item a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
-        .contact-item a:hover { color: #fff; }
-
-        /* SECTIONS */
-        section { margin-bottom: 90px; }
-
-        .section-title {
-            font-family: 'Syne', sans-serif;
-            font-size: 36px;
-            font-weight: 700;
-            margin-bottom: 40px;
-            color: #fff;
-            position: relative;
-            display: inline-block;
-            padding-bottom: 14px;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background: #fff;
-        }
-
-        /* ABOUT */
-        .about-content {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 36px;
-            max-width: 860px;
-        }
-
-        .about-content p {
-            font-size: 17px;
-            line-height: 1.85;
-            color: var(--text-secondary);
-        }
-
-        /* SERVICES */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2px;
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            overflow: hidden;
-        }
-
-        .service-card {
-            background: var(--bg-card);
-            padding: 32px;
-            transition: background 0.2s;
-        }
-
-        .service-card:hover { background: var(--bg-hover); }
-
-        .service-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 10px;
-            margin-bottom: 18px;
-            object-fit: cover;
-            filter: grayscale(100%) brightness(1.5);
-        }
-
-        .service-card h4 {
-            font-family: 'Syne', sans-serif;
-            font-size: 17px;
-            margin-bottom: 10px;
-            color: #fff;
-        }
-
-        .service-card p { color: var(--text-secondary); font-size: 14px; line-height: 1.7; }
-
-        /* SKILLS */
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 16px;
-        }
-
-        .skill-item {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 22px 24px;
-        }
-
-        .skill-header { display: flex; justify-content: space-between; margin-bottom: 12px; }
-        .skill-name { font-weight: 600; font-size: 15px; color: #fff; }
-        .skill-percent { color: var(--text-secondary); font-size: 14px; }
-
-        .skill-bar {
-            height: 4px;
-            background: rgba(255,255,255,0.06);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .skill-progress {
-            height: 100%;
-            background: #ffffff;
-            border-radius: 10px;
-        }
-
-        /* PORTFOLIO */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: 16px;
-        }
-
-        .portfolio-item {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            overflow: hidden;
-            transition: border-color 0.2s;
-        }
-
-        .portfolio-item:hover { border-color: rgba(255,255,255,0.25); }
-
-        .portfolio-img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .portfolio-content { padding: 22px; }
-
-        .portfolio-category {
-            display: inline-block;
-            padding: 4px 12px;
-            background: rgba(255,255,255,0.06);
-            color: var(--text-secondary);
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            margin-bottom: 12px;
-        }
-
-        .portfolio-item h3 { font-family: 'Syne', sans-serif; font-size: 17px; color: #fff; }
-        .portfolio-item a { color: #fff; text-decoration: none; }
-        .portfolio-item a:hover { text-decoration: underline; }
-
-        /* TIMELINE */
-        .timeline { position: relative; padding-left: 36px; }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 0; top: 6px; bottom: 6px;
-            width: 1px;
-            background: var(--border);
-        }
-
-        .timeline-item { position: relative; margin-bottom: 32px; }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -40px; top: 10px;
-            width: 8px; height: 8px;
-            border-radius: 50%;
-            background: #fff;
-        }
-
-        .timeline-content {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 24px;
-        }
-
-        .timeline-period {
-            font-size: 12px;
-            color: var(--text-secondary);
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            margin-bottom: 8px;
-        }
-
-        .timeline-title { font-family: 'Syne', sans-serif; font-size: 18px; color: #fff; margin-bottom: 10px; }
-        .timeline-description { color: var(--text-secondary); font-size: 14px; line-height: 1.75; }
-
-        /* TESTIMONIALS */
-        .testimonials-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 16px;
-        }
-
-        .testimonial-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 32px;
-            position: relative;
-        }
-
-        .quote-icon {
-            font-size: 64px;
-            color: rgba(255,255,255,0.05);
-            position: absolute;
-            top: 16px; right: 24px;
-            font-family: Georgia, serif;
-            line-height: 1;
-        }
-
-        .testimonial-text { color: var(--text-secondary); font-size: 15px; margin-bottom: 24px; line-height: 1.8; }
-        .testimonial-author { display: flex; align-items: center; gap: 14px; }
-        .author-img { width: 44px; height: 44px; border-radius: 50%; filter: grayscale(100%); }
-        .author-name { font-weight: 600; font-size: 15px; color: #fff; }
-
-        /* FOOTER */
-        footer {
-            text-align: center;
-            padding: 50px 0;
-            border-top: 1px solid var(--border);
-            margin-top: 60px;
-        }
-
-        footer p { color: var(--text-secondary); font-size: 14px; }
-
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .container { padding: 0 20px; }
-            h1 { font-size: 38px; }
-            .profile-section { flex-direction: column; gap: 28px; text-align: center; }
-            .contact-info { justify-content: center; }
-            nav { flex-wrap: wrap; gap: 14px; padding: 12px 20px; }
-            .section-title { font-size: 28px; }
-            .portfolio-grid, .services-grid, .testimonials-container, .skills-container { grid-template-columns: 1fr; }
-        }
-
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 0.6s forwards;
-        }
-
-        @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
-    </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
-    <nav>
-        <a href="#about" class="active">About</a>
-        <a href="#services">Services</a>
-        <a href="#skills">Skills</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#experience">Experience</a>
-        <a href="#testimonials">Testimonials</a>
-    </nav>
+  <main>
 
-    <div class="container">
+    <aside class="sidebar" data-sidebar>
+
+      <div class="sidebar-info">
+
+        <figure class="avatar-box">
+          <img src="./assets/images/farooq .jpeg" alt="Farooq Shah" width="80">
+        </figure>
+
+        <div class="info-content">
+          <h1 class="name" title="Farooq Shah">Farooq Shah</h1>
+          <p class="title">Data Scientist & ML Engineer</p>
+        </div>
+
+        <button class="info_more-btn" data-sidebar-btn>
+          <span>Show Contacts</span>
+          <ion-icon name="chevron-down"></ion-icon>
+        </button>
+
+      </div>
+
+      <div class="sidebar-info_more">
+
+        <div class="separator"></div>
+
+        <ul class="contacts-list">
+
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title">Email</p>
+              <a href="mailto:hayatshahm15@gmail.com" class="contact-link">hayatshahm15@gmail.com</a>
+            </div>
+          </li>
+
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="phone-portrait-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title">Phone</p>
+              <a href="tel:+923708017350" class="contact-link">+92 370 8017350</a>
+            </div>
+          </li>
+
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="calendar-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title">Birthday</p>
+              <time datetime="2002-01-01">January 01, 2002</time>
+            </div>
+          </li>
+
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="location-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title">Location</p>
+              <address>Abbottabad, KPK, Pakistan</address>
+            </div>
+          </li>
+
+        </ul>
+
+        <div class="separator"></div>
+
+        <ul class="social-list">
+
+          <li class="social-item">
+            <a href="https://www.facebook.com/farouq.shah.685088" class="social-link">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="https://x.com/tellApaart" class="social-link">
+              <ion-icon name="logo-twitter"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="https://www.instagram.com/faroow._/" class="social-link">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </aside>
+
+
+    <div class="main-content">
+
+      <nav class="navbar">
+        <ul class="navbar-list">
+
+          <li class="navbar-item">
+            <button class="navbar-link  active" data-nav-link>About</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Resume</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Portfolio</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Certifications</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Contact</button>
+          </li>
+
+        </ul>
+      </nav>
+
+
+      <!--  ABOUT  -->
+      <article class="about  active" data-page="about">
 
         <header>
-            <div class="profile-section">
-                <div class="profile-img-wrapper">
-                    <img src="./assets/images/farooq.png" alt="Farooq Shah" class="profile-img">
-                </div>
-                <div class="profile-info">
-                    <h1>Farooq Shah</h1>
-                    <p class="role">Data Scientist & ML Engineer</p>
-                    <div class="contact-info">
-                        <div class="contact-item">📧 <a href="mailto:farooqshah@email.com">farooqshah@email.com</a></div>
-                        <div class="contact-item">📞 <a href="tel:+923708017350">+92 370 8017350</a></div>
-                        <div class="contact-item">📍 Abbottabad, KPK, Pakistan</div>
-                        <div class="contact-item">🎂 Jan 01, 2002</div>
-                    </div>
-                </div>
-            </div>
+          <h2 class="h2 article-title">About me</h2>
         </header>
 
-        <!-- About -->
-        <section id="about">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <p>I'm a Data Scientist and Machine Learning Engineer currently pursuing BS in Sociology at Hazara University. I specialize in turning data into actionable insights through analytics, machine learning, and AI automation. I've worked as a Research Assistant and Data Analyst Intern at Hazara University, and I freelance on Upwork helping clients solve real-world business problems with data. My focus areas include data analytics, machine learning models, computer vision, generative AI, and deploying ML solutions to the cloud.</p>
-            </div>
+        <section class="about-text">
+          <p>
+            Sociology undergrad '26 based in Abbottabad, Pakistan. I work in data science,
+            machine learning, and AI automation — turning raw data into decisions that actually matter.
+            Previously Research Assistant and Data Analyst Intern at Hazara University.
+          </p>
+          <p>
+            Actively freelancing on Upwork and open to new projects worldwide. My goal is to
+            build AI solutions that solve real business problems — from predictive ML models
+            and computer vision to generative AI apps and automated pipelines.
+          </p>
         </section>
 
-        <!-- Services -->
-        <section id="services">
-            <h2 class="section-title">What I Do</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <img src="./assets/images/data analysis.jpg" alt="Data Analytics" class="service-icon">
-                    <h4>Data Analytics</h4>
-                    <p>One of my favorite parts of any project. I analyze data and solve complex problems with it.</p>
-                </div>
-                <div class="service-card">
-                    <img src="./assets/images/machine.jpeg" alt="Machine Learning" class="service-icon">
-                    <h4>Machine Learning</h4>
-                    <p>I train AI models with best accuracy, remove robustness and overfitting from trained models.</p>
-                </div>
-                <div class="service-card">
-                    <img src="./assets/images/computer.jpeg" alt="Computer Vision" class="service-icon">
-                    <h4>Computer Vision</h4>
-                    <p>I give vision power to AI technologies.</p>
-                </div>
-                <div class="service-card">
-                    <img src="./assets/images/generative.jpeg" alt="Generative AI" class="service-icon">
-                    <h4>Generative AI</h4>
-                    <p>I fine-tune LLMs and build functional AI apps for special purposes and business needs.</p>
-                </div>
-                <div class="service-card">
-                    <img src="./assets/images/agents.png" alt="AI Agents" class="service-icon">
-                    <h4>AI Agents Development</h4>
-                    <p>I build AI Agents to save time on repetitive and logical tasks.</p>
-                </div>
-                <div class="service-card">
-                    <img src="./assets/images/generative.jpeg" alt="AI Automation" class="service-icon">
-                    <h4>AI Automation</h4>
-                    <p>I automate tasks with AI that are repetitive and time consuming.</p>
-                </div>
-                <div class="service-card">
-                    <img src="./assets/images/mlops.jpeg" alt="MLOps" class="service-icon">
-                    <h4>MLOps</h4>
-                    <p>I deploy your AI model on AWS cloud services.</p>
-                </div>
-                <div class="service-card">
-                    <img src="./assets/images/consultancy.jpeg" alt="Consultancy" class="service-icon">
-                    <h4>Consultancy</h4>
-                    <p>I provide consultancy to clients about solving business problems through their data.</p>
-                </div>
-            </div>
+        <section class="service">
+
+          <h3 class="h3 service-title">What i'm doing</h3>
+
+          <ul class="service-list">
+
+            <li class="service-item">
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-design.svg" alt="data analytics icon" width="40">
+              </div>
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Data Analytics</h4>
+                <p class="service-item-text">
+                  Analyzing complex datasets and solving business problems through advanced analytics and visualization.
+                </p>
+              </div>
+            </li>
+
+            <li class="service-item">
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-dev.svg" alt="machine learning icon" width="40">
+              </div>
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Machine Learning</h4>
+                <p class="service-item-text">
+                  Training accurate ML models with precision tuning, removing overfitting and ensuring robustness.
+                </p>
+              </div>
+            </li>
+
+            <li class="service-item">
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-app.svg" alt="computer vision icon" width="40">
+              </div>
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Computer Vision</h4>
+                <p class="service-item-text">
+                  Giving AI the power to see and interpret visual data using OpenCV and deep learning.
+                </p>
+              </div>
+            </li>
+
+            <li class="service-item">
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-photo.svg" alt="generative ai icon" width="40">
+              </div>
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Generative AI</h4>
+                <p class="service-item-text">
+                  Fine-tuning LLMs and building functional AI apps for special purposes and business needs.
+                </p>
+              </div>
+            </li>
+
+            <li class="service-item">
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-dev.svg" alt="ai agents icon" width="40">
+              </div>
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">AI Agents Development</h4>
+                <p class="service-item-text">
+                  Building intelligent agents that automate repetitive and logical tasks autonomously.
+                </p>
+              </div>
+            </li>
+
+            <li class="service-item">
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-design.svg" alt="mlops icon" width="40">
+              </div>
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">MLOps / AWS</h4>
+                <p class="service-item-text">
+                  Deploying production-ready AI models on AWS cloud infrastructure with CI/CD pipelines.
+                </p>
+              </div>
+            </li>
+
+          </ul>
+
         </section>
 
-        <!-- Skills -->
-        <section id="skills">
-            <h2 class="section-title">My Skills</h2>
-            <div class="skills-container">
-                <div class="skill-item">
-                    <div class="skill-header"><span class="skill-name">Data Analytics</span><span class="skill-percent">80%</span></div>
-                    <div class="skill-bar"><div class="skill-progress" style="width: 80%"></div></div>
+
+        <section class="testimonials">
+
+          <h3 class="h3 testimonials-title">Testimonials</h3>
+
+          <ul class="testimonials-list has-scrollbar">
+
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+                <figure class="testimonials-avatar-box">
+                  <img src="./assets/images/avatar-1.png" alt="Maaz Ali" width="60" data-testimonials-avatar>
+                </figure>
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Maaz Ali</h4>
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    Farooq's ability to turn raw data into actionable insights is truly impressive.
+                    He handled our data preprocessing and analysis with precision and produced results
+                    that directly impacted our business decisions. His dedication and technical expertise
+                    made a complex task look simple.
+                  </p>
                 </div>
-                <div class="skill-item">
-                    <div class="skill-header"><span class="skill-name">Machine Learning</span><span class="skill-percent">70%</span></div>
-                    <div class="skill-bar"><div class="skill-progress" style="width: 70%"></div></div>
+              </div>
+            </li>
+
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+                <figure class="testimonials-avatar-box">
+                  <img src="./assets/images/avatar-2.png" alt="Jessica Miller" width="60" data-testimonials-avatar>
+                </figure>
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Jessica Miller</h4>
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    When it comes to end-to-end data solutions, Farooq is the go-to professional.
+                    I worked with him on a project requiring data modeling and deployment, and I was
+                    amazed by how smoothly the process went. His ability to deliver on time made him
+                    an indispensable part of our team.
+                  </p>
                 </div>
-                <div class="skill-item">
-                    <div class="skill-header"><span class="skill-name">Data Visualization</span><span class="skill-percent">90%</span></div>
-                    <div class="skill-bar"><div class="skill-progress" style="width: 90%"></div></div>
+              </div>
+            </li>
+
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+                <figure class="testimonials-avatar-box">
+                  <img src="./assets/images/avatar-3.png" alt="Emily Evans" width="60" data-testimonials-avatar>
+                </figure>
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Emily Evans</h4>
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    Our collaboration with Farooq was a game-changer. He not only brought strong
+                    technical skills but also a deep understanding of how to make data work for our
+                    business. His ability to create seamless data pipelines saved us countless hours.
+                  </p>
                 </div>
-                <div class="skill-item">
-                    <div class="skill-header"><span class="skill-name">Computer Vision</span><span class="skill-percent">50%</span></div>
-                    <div class="skill-bar"><div class="skill-progress" style="width: 50%"></div></div>
+              </div>
+            </li>
+
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+                <figure class="testimonials-avatar-box">
+                  <img src="./assets/images/avatar-4.png" alt="Henry William" width="60" data-testimonials-avatar>
+                </figure>
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Henry William</h4>
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    Farooq stands out for his holistic approach. He didn't just provide data models —
+                    he ensured they were fully integrated into our system. His attention to detail and
+                    commitment to exceptional work set a new standard for our future collaborations.
+                  </p>
                 </div>
-                <div class="skill-item">
-                    <div class="skill-header"><span class="skill-name">Generative AI</span><span class="skill-percent">50%</span></div>
-                    <div class="skill-bar"><div class="skill-progress" style="width: 50%"></div></div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-header"><span class="skill-name">AI Automation</span><span class="skill-percent">50%</span></div>
-                    <div class="skill-bar"><div class="skill-progress" style="width: 50%"></div></div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-header"><span class="skill-name">AI Agents Development</span><span class="skill-percent">50%</span></div>
-                    <div class="skill-bar"><div class="skill-progress" style="width: 50%"></div></div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-header"><span class="skill-name">MLOps</span><span class="skill-percent">50%</span></div>
-                    <div class="skill-bar"><div class="skill-progress" style="width: 50%"></div></div>
-                </div>
-            </div>
+              </div>
+            </li>
+
+          </ul>
+
         </section>
 
-        <!-- Portfolio -->
-        <section id="portfolio">
-            <h2 class="section-title">Portfolio</h2>
-            <div class="portfolio-grid">
 
-                <div class="portfolio-item">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23141414'/%3E%3Crect x='60' y='40' width='30' height='120' fill='%23333' rx='3'/%3E%3Crect x='100' y='20' width='30' height='140' fill='%23444' rx='3'/%3E%3Crect x='140' y='60' width='30' height='100' fill='%23555' rx='3'/%3E%3Crect x='180' y='30' width='30' height='130' fill='%23444' rx='3'/%3E%3Crect x='220' y='50' width='30' height='110' fill='%23333' rx='3'/%3E%3Cpath d='M75 40 L115 20 L155 60 L195 30 L235 50' stroke='%23777' stroke-width='2' fill='none'/%3E%3C/svg%3E" alt="Week 1" class="portfolio-img">
-                    <div class="portfolio-content">
-                        <span class="portfolio-category">Data Analytics</span>
-                        <h3><a href="https://github.com/itexpert67/devsil-mentorship/tree/main/week%2001">Week 1 Project</a></h3>
-                    </div>
-                </div>
+        <div class="modal-container" data-modal-container>
 
-                <div class="portfolio-item">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23141414'/%3E%3Crect x='150' y='20' width='100' height='160' rx='14' fill='none' stroke='%23444' stroke-width='3'/%3E%3Crect x='158' y='35' width='84' height='120' rx='4' fill='%231a1a1a'/%3E%3Ctext x='200' y='105' font-family='sans-serif' font-size='28' fill='%23777' text-anchor='middle'%3E%24%3C/text%3E%3C/svg%3E" alt="Mobile Brands" class="portfolio-img">
-                    <div class="portfolio-content">
-                        <span class="portfolio-category">Data Analytics</span>
-                        <h3><a href="https://github.com/itexpert67/devsil-mentorship/tree/main/week%2002">Mobile Brands Prices Analysis</a></h3>
-                    </div>
-                </div>
+          <div class="overlay" data-overlay></div>
 
-                <div class="portfolio-item">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23141414'/%3E%3Ccircle cx='130' cy='100' r='55' fill='none' stroke='%23333' stroke-width='18'/%3E%3Ccircle cx='130' cy='100' r='55' fill='none' stroke='%23666' stroke-width='18' stroke-dasharray='173 173' stroke-dashoffset='0'/%3E%3Ccircle cx='270' cy='100' r='40' fill='none' stroke='%23444' stroke-width='14' stroke-dasharray='100 150'/%3E%3C/svg%3E" alt="Apps Data" class="portfolio-img">
-                    <div class="portfolio-content">
-                        <span class="portfolio-category">Data Analytics</span>
-                        <h3><a href="https://github.com/itexpert67/devsil-mentorship/tree/main/week%2003">Apps Prices and Ratings</a></h3>
-                    </div>
-                </div>
+          <section class="testimonials-modal">
 
-                <div class="portfolio-item">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23141414'/%3E%3Ccircle cx='200' cy='100' r='70' fill='none' stroke='%23333' stroke-width='1'/%3E%3Ccircle cx='200' cy='100' r='50' fill='none' stroke='%23444' stroke-width='1'/%3E%3Ccircle cx='200' cy='100' r='30' fill='%231a1a1a' stroke='%23555' stroke-width='1'/%3E%3Ccircle cx='270' cy='100' r='7' fill='%23777'/%3E%3Ccircle cx='130' cy='100' r='7' fill='%23777'/%3E%3Ccircle cx='200' cy='30' r='7' fill='%23777'/%3E%3Ccircle cx='200' cy='170' r='7' fill='%23777'/%3E%3C/svg%3E" alt="COVID-19" class="portfolio-img">
-                    <div class="portfolio-content">
-                        <span class="portfolio-category">Machine Learning</span>
-                        <h3><a href="https://github.com/itexpert67/devsil-mentorship/tree/main/week%2004">COVID-19 Country-wise Cleaned Dataset</a></h3>
-                    </div>
-                </div>
+            <button class="modal-close-btn" data-modal-close-btn>
+              <ion-icon name="close-outline"></ion-icon>
+            </button>
 
-                <div class="portfolio-item">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23141414'/%3E%3Cpath d='M200 55 C170 35 138 35 122 57 C106 79 118 112 200 148 C282 112 294 79 278 57 C262 35 230 35 200 55Z' fill='%231e1e1e' stroke='%23555' stroke-width='2'/%3E%3Cpath d='M182 98 L193 112 L222 82' stroke='%23888' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" alt="Heart Diseases" class="portfolio-img">
-                    <div class="portfolio-content">
-                        <span class="portfolio-category">Data Analytics</span>
-                        <h3><a href="https://github.com/itexpert67/devsil-mentorship/tree/main/week%2005">Heart Diseases Cleaned Dataset</a></h3>
-                    </div>
-                </div>
-
-                <div class="portfolio-item">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23141414'/%3E%3Ccircle cx='200' cy='100' r='65' fill='none' stroke='%23333' stroke-width='2'/%3E%3Ccircle cx='200' cy='100' r='45' fill='none' stroke='%23444' stroke-width='1'/%3E%3Ccircle cx='200' cy='100' r='10' fill='%23666'/%3E%3Cline x1='130' y1='100' x2='80' y2='100' stroke='%23555' stroke-width='3'/%3E%3Cline x1='270' y1='100' x2='320' y2='100' stroke='%23555' stroke-width='3'/%3E%3Ctext x='200' y='178' font-family='monospace' font-size='11' fill='%23555' text-anchor='middle'%3E[ ML MODEL ]%3C/text%3E%3C/svg%3E" alt="TBM" class="portfolio-img">
-                    <div class="portfolio-content">
-                        <span class="portfolio-category">Machine Learning</span>
-                        <h3><a href="https://github.com/itexpert67/devsil-mentorship/tree/main/week%2006">TBM Penetration Rate Optimization</a></h3>
-                    </div>
-                </div>
-
+            <div class="modal-img-wrapper">
+              <figure class="modal-avatar-box">
+                <img src="./assets/images/avatar-1.png" alt="Maaz Ali" width="80" data-modal-img>
+              </figure>
+              <img src="./assets/images/icon-quote.svg" alt="quote icon">
             </div>
+
+            <div class="modal-content">
+              <h4 class="h3 modal-title" data-modal-title>Maaz Ali</h4>
+              <time datetime="2025-06-14">14 June, 2025</time>
+              <div data-modal-text>
+                <p>
+                  Farooq's ability to turn raw data into actionable insights is truly impressive.
+                  He handled our data preprocessing and analysis with precision and produced results
+                  that directly impacted our business decisions.
+                </p>
+              </div>
+            </div>
+
+          </section>
+
+        </div>
+
+
+        <section class="clients">
+
+          <h3 class="h3 clients-title">Clients</h3>
+
+          <ul class="clients-list has-scrollbar">
+            <li class="clients-item"><a href="#"><img src="./assets/images/logo-1-color.png" alt="client logo"></a></li>
+            <li class="clients-item"><a href="#"><img src="./assets/images/logo-2-color.png" alt="client logo"></a></li>
+            <li class="clients-item"><a href="#"><img src="./assets/images/logo-3-color.png" alt="client logo"></a></li>
+            <li class="clients-item"><a href="#"><img src="./assets/images/logo-4-color.png" alt="client logo"></a></li>
+            <li class="clients-item"><a href="#"><img src="./assets/images/logo-5-color.png" alt="client logo"></a></li>
+            <li class="clients-item"><a href="#"><img src="./assets/images/logo-6-color.png" alt="client logo"></a></li>
+          </ul>
+
         </section>
 
-        <!-- Experience -->
-        <section id="experience">
-            <h2 class="section-title">Experience</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-period">Jan 2025 – May 2025</div>
-                        <h3 class="timeline-title">Research Assistant – Hazara University</h3>
-                        <p class="timeline-description">Assisted faculty in collecting and analyzing social survey data. Used Python and Excel to clean datasets and prepare summary reports. Contributed to drafting research papers on local social behaviors and trends.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-period">Jun 2025 – Aug 2025</div>
-                        <h3 class="timeline-title">Data Analyst Intern – Hazara University</h3>
-                        <p class="timeline-description">Worked on quantitative analysis for student attendance and academic performance. Applied statistical methods to identify trends and patterns in student data. Presented findings to department staff to support decision-making.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-period">Sep 2025 – Dec 2025</div>
-                        <h3 class="timeline-title">Sociology Research Project – Hazara University</h3>
-                        <p class="timeline-description">Conducted a project on social behavior in urban communities using surveys and interviews. Organized and visualized data using Python (pandas, matplotlib) and Excel. Developed reports linking sociological theory with empirical results.</p>
-                    </div>
-                </div>
-            </div>
+      </article>
+
+
+      <!--  RESUME  -->
+      <article class="resume" data-page="resume">
+
+        <header>
+          <h2 class="h2 article-title">Resume</h2>
+        </header>
+
+        <section class="timeline">
+          <div class="title-wrapper">
+            <div class="icon-box"><ion-icon name="book-outline"></ion-icon></div>
+            <h3 class="h3">Education</h3>
+          </div>
+          <ol class="timeline-list">
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">Hazara University Mansehra</h4>
+              <span>2022 — 2026</span>
+              <p class="timeline-text">
+                BS in Sociology — studying social behavior and research methods while simultaneously
+                mastering data science and machine learning independently.
+              </p>
+            </li>
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">Iqra Academy Abbottabad</h4>
+              <span>2020 — 2022</span>
+              <p class="timeline-text">
+                FSC — Pre-engineering studies providing the analytical foundation for future data science work.
+              </p>
+            </li>
+
+          </ol>
         </section>
 
-        <!-- Testimonials -->
-        <section id="testimonials">
-            <h2 class="section-title">Testimonials</h2>
-            <div class="testimonials-container">
-                <div class="testimonial-card">
-                    <div class="quote-icon">"</div>
-                    <p class="testimonial-text">Farooq's ability to turn raw data into actionable insights is truly impressive. He handled our data preprocessing and analysis with precision and produced results that directly impacted our business decisions.</p>
-                    <div class="testimonial-author">
-                        <img src="./assets/images/avatar-1.png" alt="Maaz Ali" class="author-img">
-                        <div><div class="author-name">Maaz Ali</div></div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="quote-icon">"</div>
-                    <p class="testimonial-text">When it comes to end-to-end data solutions, Farooq is the go-to professional. I was amazed by how smoothly the process went — his ability to deliver on time made him indispensable.</p>
-                    <div class="testimonial-author">
-                        <img src="./assets/images/avatar-2.png" alt="Jessica Miller" class="author-img">
-                        <div><div class="author-name">Jessica Miller</div></div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="quote-icon">"</div>
-                    <p class="testimonial-text">Our collaboration with Farooq was a game-changer. His ability to create seamless data pipelines saved us countless hours, and his clear communication made the entire project stress-free.</p>
-                    <div class="testimonial-author">
-                        <img src="./assets/images/avatar-3.png" alt="Emily Evans" class="author-img">
-                        <div><div class="author-name">Emily Evans</div></div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="quote-icon">"</div>
-                    <p class="testimonial-text">Farooq stands out for his holistic approach. He didn't just provide data models — he ensured they were fully integrated into our system. His attention to detail set a new standard for our collaborations.</p>
-                    <div class="testimonial-author">
-                        <img src="./assets/images/avatar-4.png" alt="Henry William" class="author-img">
-                        <div><div class="author-name">Henry William</div></div>
-                    </div>
-                </div>
-            </div>
+        <section class="timeline">
+          <div class="title-wrapper">
+            <div class="icon-box"><ion-icon name="book-outline"></ion-icon></div>
+            <h3 class="h3">Experience</h3>
+          </div>
+          <ol class="timeline-list">
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">Research Assistant — Hazara University</h4>
+              <span>Jan 2025 — May 2025</span>
+              <p class="timeline-text">
+                Assisted faculty in collecting and analyzing social survey data. Used Python and Excel
+                to clean datasets and prepare summary reports. Contributed to drafting research papers
+                on local social behaviors and trends.
+              </p>
+            </li>
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">Data Analyst Intern — Hazara University</h4>
+              <span>Jun 2025 — Aug 2025</span>
+              <p class="timeline-text">
+                Worked on quantitative analysis for student attendance and academic performance.
+                Applied statistical methods to identify trends and patterns in student data.
+                Presented findings to department staff to support decision-making.
+              </p>
+            </li>
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">Sociology Research Project — Hazara University</h4>
+              <span>Sep 2025 — Dec 2025</span>
+              <p class="timeline-text">
+                Conducted research on social behavior in urban communities using surveys and interviews.
+                Organized and visualized data using Python (pandas, matplotlib) and Excel.
+                Developed reports linking sociological theory with empirical results.
+              </p>
+            </li>
+
+          </ol>
         </section>
 
-        <footer>
-            <p>&copy; 2026 Farooq Shah. All rights reserved.</p>
-        </footer>
+        <section class="skill">
+          <h3 class="h3 skills-title">My skills</h3>
+          <ul class="skills-list content-card">
+
+            <li class="skills-item">
+              <div class="title-wrapper"><h5 class="h5">Data Visualization</h5><data value="90">90%</data></div>
+              <div class="skill-progress-bg"><div class="skill-progress-fill" style="width: 90%;"></div></div>
+            </li>
+
+            <li class="skills-item">
+              <div class="title-wrapper"><h5 class="h5">Data Analytics</h5><data value="80">80%</data></div>
+              <div class="skill-progress-bg"><div class="skill-progress-fill" style="width: 80%;"></div></div>
+            </li>
+
+            <li class="skills-item">
+              <div class="title-wrapper"><h5 class="h5">Machine Learning</h5><data value="70">70%</data></div>
+              <div class="skill-progress-bg"><div class="skill-progress-fill" style="width: 70%;"></div></div>
+            </li>
+
+            <li class="skills-item">
+              <div class="title-wrapper"><h5 class="h5">Computer Vision</h5><data value="50">50%</data></div>
+              <div class="skill-progress-bg"><div class="skill-progress-fill" style="width: 50%;"></div></div>
+            </li>
+
+            <li class="skills-item">
+              <div class="title-wrapper"><h5 class="h5">Generative AI</h5><data value="50">50%</data></div>
+              <div class="skill-progress-bg"><div class="skill-progress-fill" style="width: 50%;"></div></div>
+            </li>
+
+            <li class="skills-item">
+              <div class="title-wrapper"><h5 class="h5">AI Automation</h5><data value="50">50%</data></div>
+              <div class="skill-progress-bg"><div class="skill-progress-fill" style="width: 50%;"></div></div>
+            </li>
+
+            <li class="skills-item">
+              <div class="title-wrapper"><h5 class="h5">AI Agents Development</h5><data value="50">50%</data></div>
+              <div class="skill-progress-bg"><div class="skill-progress-fill" style="width: 50%;"></div></div>
+            </li>
+
+            <li class="skills-item">
+              <div class="title-wrapper"><h5 class="h5">MLOps / AWS</h5><data value="50">50%</data></div>
+              <div class="skill-progress-bg"><div class="skill-progress-fill" style="width: 50%;"></div></div>
+            </li>
+
+          </ul>
+        </section>
+
+      </article>
+
+
+      <!--  PORTFOLIO  -->
+      <article class="portfolio" data-page="portfolio">
+
+        <header>
+          <h2 class="h2 article-title">Portfolio</h2>
+        </header>
+
+        <section class="projects">
+
+          <ul class="filter-list">
+            <li class="filter-item"><button class="active" data-filter-btn>All</button></li>
+            <li class="filter-item"><button data-filter-btn>Data Analytics</button></li>
+            <li class="filter-item"><button data-filter-btn>Machine Learning</button></li>
+            <li class="filter-item"><button data-filter-btn>Computer Vision</button></li>
+            <li class="filter-item"><button data-filter-btn>Generative AI</button></li>
+          </ul>
+
+          <div class="filter-select-box">
+            <button class="filter-select" data-select>
+              <div class="select-value" data-selecct-value>Select category</div>
+              <div class="select-icon"><ion-icon name="chevron-down"></ion-icon></div>
+            </button>
+            <ul class="select-list">
+              <li class="select-item"><button data-select-item>All</button></li>
+              <li class="select-item"><button data-select-item>Data Analytics</button></li>
+              <li class="select-item"><button data-select-item>Machine Learning</button></li>
+              <li class="select-item"><button data-select-item>Computer Vision</button></li>
+              <li class="select-item"><button data-select-item>Generative AI</button></li>
+            </ul>
+          </div>
+
+          <ul class="project-list">
+
+            <li class="project-item  active" data-filter-item data-category="machine learning">
+              <a href="https://github.com/itexpert67/devsil-mentorship/tree/main/week%2007" target="_blank">
+                <figure class="project-img">
+                  <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
+                  <img src="./assets/images/attrition.png" alt="Employee Attrition Prediction System" loading="lazy">
+                </figure>
+                <h3 class="project-title">Employee Attrition Prediction System</h3>
+                <p class="project-category">Machine Learning</p>
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="machine learning">
+              <a href="https://github.com/itexpert67/devsil-mentorship/tree/main/week%2006" target="_blank">
+                <figure class="project-img">
+                  <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
+                  <img src="./assets/images/tbm.png" alt="TBM Penetration Rate Project" loading="lazy">
+                </figure>
+                <h3 class="project-title">TBM Penetration Rate Project</h3>
+                <p class="project-category">Machine Learning</p>
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="data analytics">
+              <a href="https://github.com/itexpert67/devsil-mentorship/tree/main/week%2005" target="_blank">
+                <figure class="project-img">
+                  <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
+                  <img src="./assets/images/heart.png" alt="Heart Diseases Cleaned Dataset" loading="lazy">
+                </figure>
+                <h3 class="project-title">Heart Diseases Cleaned Dataset</h3>
+                <p class="project-category">Data Analytics</p>
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="machine learning">
+              <a href="https://github.com/itexpert67/devsil-mentorship/tree/main/week%2004" target="_blank">
+                <figure class="project-img">
+                  <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
+                  <img src="./assets/images/covid.png" alt="Covid-19 Country wise Cleaned Dataset" loading="lazy">
+                </figure>
+                <h3 class="project-title">Covid-19 Country wise Cleaned Dataset</h3>
+                <p class="project-category">Machine Learning</p>
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="data analytics">
+              <a href="https://github.com/itexpert67/devsil-mentorship/tree/main/week%2003" target="_blank">
+                <figure class="project-img">
+                  <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
+                  <img src="./assets/images/apps.png" alt="Apps Prices and Ratings" loading="lazy">
+                </figure>
+                <h3 class="project-title">Apps Prices &amp; Ratings</h3>
+                <p class="project-category">Data Analytics</p>
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="data analytics">
+              <a href="https://github.com/itexpert67/devsil-mentorship/tree/main/week%2002" target="_blank">
+                <figure class="project-img">
+                  <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
+                  <img src="./assets/images/mobile.png" alt="Mobile Brands Prices Analysis" loading="lazy">
+                </figure>
+                <h3 class="project-title">Mobile Brands Prices Analysis</h3>
+                <p class="project-category">Data Analytics</p>
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="data analytics">
+              <a href="https://github.com/itexpert67/devsil-mentorship/tree/main/week%2001" target="_blank">
+                <figure class="project-img">
+                  <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
+                  <img src="./assets/images/week1.png" alt="Week 1 Project" loading="lazy">
+                </figure>
+                <h3 class="project-title">Week 1 Project</h3>
+                <p class="project-category">Data Analytics</p>
+              </a>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article>
+
+
+      <!--  CERTIFICATIONS  -->
+      <article class="blog" data-page="certifications">
+
+        <header>
+          <h2 class="h2 article-title">Certifications</h2>
+        </header>
+
+        <section class="blog-posts">
+          <ul class="blog-posts-list">
+
+            <li class="blog-post-item">
+              <a href="https://codanics.com/tutor-certificate-2?cert_hash=7e5506d919b0ac9a" target="_blank">
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/piccc.webp" alt="Python Ka Chilla (40-Days)" loading="lazy">
+                </figure>
+                <div class="blog-content">
+                  <div class="blog-meta">
+                    <p class="blog-category">Codanics</p>
+                    <span class="dot"></span>
+                    <time datetime="2024-07-07">July 7, 2024</time>
+                  </div>
+                  <h3 class="h3 blog-item-title">Python Ka Chilla (40-Days)</h3>
+                  <p class="blog-text">
+                    Completed 40-day intensive Python bootcamp covering data science fundamentals, pandas, matplotlib, and ML basics.
+                  </p>
+                </div>
+              </a>
+            </li>
+
+          </ul>
+        </section>
+
+      </article>
+
+
+      <!--  CONTACT  -->
+      <article class="contact" data-page="contact">
+
+        <header>
+          <h2 class="h2 article-title">Contact</h2>
+        </header>
+
+        <section class="mapbox" data-mapbox>
+          <figure>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3313.812276504816!2d73.2214963!3d34.1687501!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfb7a6b6a6a6a7%3A0xabcdef1234567890!2sAbbottabad%2C%20Khyber%20Pakhtunkhwa%2C%20Pakistan!5e0!3m2!1sen!2s!4v1705680000000"
+              width="400" height="300" loading="lazy"></iframe>
+          </figure>
+        </section>
+
+        <section class="contact-form">
+          <h3 class="h3 form-title">Contact Form</h3>
+          <form action="#" class="form" data-form>
+            <div class="input-wrapper">
+              <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
+              <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
+            </div>
+            <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
+            <button class="form-btn" type="submit" disabled data-form-btn>
+              <ion-icon name="paper-plane"></ion-icon>
+              <span>Send Message</span>
+            </button>
+          </form>
+        </section>
+
+      </article>
 
     </div>
 
-    <script>
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-                document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
+  </main>
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('fade-in');
-            });
-        }, { threshold: 0.1 });
+  <script src="./assets/js/script.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-        document.querySelectorAll('section').forEach(el => observer.observe(el));
-    </script>
 </body>
 </html>
