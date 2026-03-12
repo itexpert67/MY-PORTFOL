@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farooq Shah</title>
+
+  <!-- Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.js"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg-gradient-onyx: linear-gradient(to bottom right, hsl(240, 1%, 25%) 3%, hsl(0, 0%, 19%) 97%);
+      --bg-gradient-jet: linear-gradient(to bottom right, hsla(240, 1%, 18%, 0.251) 0%, hsla(240, 2%, 11%, 0) 100%), hsl(240, 2%, 13%);
+      --bg-gradient-yellow-1: linear-gradient(to bottom right, hsl(45, 100%, 71%) 0%, hsla(36, 100%, 69%, 0) 50%);
+      --bg-gradient-yellow-2: linear-gradient(135deg, hsla(45, 100%, 71%, 0.251) 0%, hsla(35, 100%, 68%, 0) 59.86%), hsl(240, 2%, 13%);
+      --border-gradient-onyx: linear-gradient(to bottom right, hsl(0, 0%, 25%) 0%, hsla(0, 0%, 25%, 0) 50%);
+      --text-gradient-yellow: linear-gradient(to right, hsl(45, 100%, 72%), hsl(35, 100%, 68%));
+
+      --jet: hsl(0, 0%, 22%);
+      --onyx: hsl(240, 1%, 17%);
+      --eerie-black-1: hsl(240, 2%, 13%);
+      --eerie-black-2: hsl(240, 2%, 12%);
+      --smoky-black: hsl(0, 0%, 7%);
+      --white-1: hsl(0, 0%, 100%);
+      --white-2: hsl(0, 0%, 98%);
+      --orange-yellow-crayola: hsl(45, 100%, 72%);
+      --vegas-gold: hsl(45, 54%, 58%);
+      --light-gray: hsl(0, 0%, 84%);
+      --light-gray-70: hsla(0, 0%, 84%, 0.7);
+      --bittersweet-shimmer: hsl(0, 43%, 51%);
+
+      --ff-poppins: 'Poppins', sans-serif;
+      --fs-1: 24px; --fs-2: 18px; --fs-3: 17px; --fs-4: 16px; --fs-5: 15px; --fs-6: 14px; --fs-7: 13px; --fs-8: 11px;
+      --fw-300: 300; --fw-400: 400; --fw-500: 500; --fw-600: 600;
+      --shadow-1: -4px 8px 24px hsla(0, 0%, 0%, 0.25);
+      --shadow-2: 0 16px 30px hsla(0, 0%, 0%, 0.25);
+      --shadow-3: 0 16px 40px hsla(0, 0%, 0%, 0.25);
+      --shadow-4: 0 25px 50px hsla(0, 0%, 0%, 0.15);
+      --shadow-5: 0 24px 80px hsla(0, 0%, 0%, 0.25);
+      --transition-1: 0.25s ease;
+      --transition-2: 0.5s ease-in-out;
+    }
+
+    body {
+      background: var(--smoky-black);
+      font-family: var(--ff-poppins);
+      color: var(--light-gray);
+      min-height: 100vh;
+    }
+
+    a { text-decoration: none; }
+    img { max-width: 100%; height: auto; }
+    li { list-style: none; }
+    button { cursor: pointer; border: none; background: none; font-family: var(--ff-poppins); }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--onyx); }
+    ::-webkit-scrollbar-thumb { background: var(--orange-yellow-crayola); border-radius: 3px; }
+
+    /* ── Layout ── */
+    main {
+      display: grid;
+      grid-template-columns: 1fr;
+      max-width: 1200px;
+      margin: 60px auto;
+      padding: 0 15px;
+      gap: 25px;
+    }
+
+    @media (min-width: 1024px) {
+      main { grid-template-columns: 300px 1fr; align-items: start; }
+    }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      background: var(--eerie-black-2);
+      border: 1px solid var(--jet);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: var(--shadow-1);
+      position: sticky;
+      top: 60px;
+      z-index: 1;
+    }
+
+    .sidebar-info {
+      display: flex; flex-direction: column; align-items: center;
+      gap: 15px; padding-bottom: 20px;
+      border-bottom: 1px solid var(--jet);
+      margin-bottom: 20px;
+    }
+
+    .avatar-box {
+      background: var(--bg-gradient-onyx);
+      border-radius: 20px; overflow: hidden;
+      width: 80px; height: 80px;
+    }
+    .avatar-box img { width: 100%; height: 100%; object-fit: cover; }
+
+    .info-content { text-align: center; }
+    .info-content .name { font-size: var(--fs-3); font-weight: var(--fw-500); color: var(--white-2); margin-bottom: 10px; }
+    .info-content .title {
+      background: var(--onyx); color: var(--white-1);
+      font-size: var(--fs-8); font-weight: var(--fw-300);
+      padding: 3px 12px; border-radius: 8px; width: max-content; margin: 0 auto;
+    }
+
+    .sidebar-info-more { display: none; }
+    .sidebar-info-more.active { display: block; }
+
+    .contacts-list { display: flex; flex-direction: column; gap: 16px; margin-bottom: 20px; }
+
+    .contact-item {
+      display: flex; align-items: center; gap: 16px;
+      min-width: 0;
+    }
+
+    .contact-icon {
+      background: var(--border-gradient-onyx);
+      width: 30px; height: 30px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: var(--shadow-1);
+      flex-shrink: 0;
+    }
+    .contact-icon ion-icon { color: var(--orange-yellow-crayola); font-size: 16px; }
+
+    .contact-info p.contact-title { color: var(--light-gray-70); font-size: var(--fs-8); text-transform: uppercase; margin-bottom: 2px; }
+    .contact-info address, .contact-info a, .contact-info time { font-size: var(--fs-7); font-style: normal; color: var(--white-2); }
+
+    .separator { width: 100%; height: 1px; background: var(--jet); margin: 16px 0; }
+
+    .social-list { display: flex; justify-content: center; gap: 15px; }
+    .social-item a {
+      color: var(--light-gray-70); font-size: 18px;
+      transition: var(--transition-1);
+    }
+    .social-item a:hover { color: var(--light-gray); }
+
+    .info-more-btn {
+      background: var(--border-gradient-onyx);
+      color: var(--orange-yellow-crayola);
+      font-size: var(--fs-8); font-weight: var(--fw-500);
+      text-transform: uppercase; letter-spacing: 1px;
+      padding: 8px 16px; border-radius: 8px;
+      display: flex; align-items: center; gap: 6px;
+      margin: 0 auto 10px;
+      box-shadow: var(--shadow-1);
+      transition: var(--transition-1);
+    }
+    .info-more-btn:hover { background: var(--bg-gradient-yellow-1); color: var(--smoky-black); }
+
+    /* ── Article base ── */
+    article { display: none; }
+    article.active { display: block; animation: fade 0.5s ease forwards; }
+    @keyframes fade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+    .article-title {
+      font-size: var(--fs-2); font-weight: var(--fw-600);
+      color: var(--white-2); padding-bottom: 7px;
+      border-bottom: 3px solid var(--orange-yellow-crayola);
+      margin-bottom: 30px; display: inline-block;
+    }
+
+    /* ── Navbar ── */
+    nav {
+      background: hsla(240, 1%, 17%, 0.75);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--jet);
+      border-radius: 20px 20px 0 0;
+      padding: 0 20px;
+      position: sticky;
+      top: 0; z-index: 10;
+      box-shadow: var(--shadow-2);
+    }
+
+    .navbar-list { display: flex; overflow-x: auto; gap: 0; }
+    .navbar-link {
+      color: var(--light-gray-70); font-size: var(--fs-8);
+      font-weight: var(--fw-500); text-transform: capitalize;
+      padding: 20px 15px; white-space: nowrap;
+      transition: var(--transition-1);
+    }
+    .navbar-link:hover, .navbar-link.active { color: var(--orange-yellow-crayola); }
+
+    /* ── Right panel ── */
+    .right-panel {
+      background: var(--eerie-black-2);
+      border: 1px solid var(--jet);
+      border-radius: 0 0 20px 20px;
+      padding: 40px;
+      box-shadow: var(--shadow-1);
+      min-height: 400px;
+    }
+
+    /* ── About ── */
+    .about-text { font-size: var(--fs-6); font-weight: var(--fw-300); color: var(--light-gray); line-height: 1.8; margin-bottom: 30px; }
+
+    .service-title { font-size: var(--fs-5); font-weight: var(--fw-600); color: var(--white-2); margin-bottom: 20px; }
+
+    .service-list { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+    .service-item {
+      background: var(--border-gradient-onyx);
+      padding: 25px; border-radius: 14px;
+      box-shadow: var(--shadow-3);
+      transition: var(--transition-1);
+    }
+    .service-item:hover { background: var(--bg-gradient-yellow-2); }
+
+    .service-icon-box { margin-bottom: 10px; }
+    .service-icon-box img { width: 40px; }
+    .service-item-title { font-size: var(--fs-6); font-weight: var(--fw-600); color: var(--white-2); margin-bottom: 7px; }
+    .service-item-text { font-size: var(--fs-7); font-weight: var(--fw-300); color: var(--light-gray); line-height: 1.6; }
+
+    .testimonials-title, .clients-title { font-size: var(--fs-5); font-weight: var(--fw-600); color: var(--white-2); margin: 30px 0 15px; }
+
+    .testimonials-list { display: flex; gap: 15px; overflow-x: auto; padding-bottom: 10px; }
+
+    .testimonials-item {
+      background: var(--border-gradient-onyx);
+      padding: 20px; border-radius: 14px;
+      box-shadow: var(--shadow-3);
+      min-width: 230px; cursor: pointer;
+      transition: var(--transition-1);
+    }
+    .testimonials-item:hover { background: var(--bg-gradient-yellow-2); }
+
+    .testimonials-avatar { width: 50px; height: 50px; border-radius: 50%; margin-bottom: 10px; }
+    .testimonials-item-title { font-size: var(--fs-7); font-weight: var(--fw-600); color: var(--white-2); }
+    .testimonials-text { font-size: var(--fs-8); color: var(--light-gray-70); margin-top: 6px; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+    .clients-list { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: center; }
+    .clients-item img { width: 100px; filter: grayscale(1) invert(1); opacity: 0.5; transition: var(--transition-1); }
+    .clients-item img:hover { filter: none; opacity: 1; }
+
+    /* ── Resume ── */
+    .timeline-list { padding-left: 45px; position: relative; }
+    .timeline-list::before { content: ''; position: absolute; left: 1px; top: 0; bottom: 0; width: 1px; background: var(--jet); }
+
+    .timeline-item { position: relative; margin-bottom: 20px; }
+    .timeline-item::before { content: ''; position: absolute; left: -45px; top: 5px; width: 10px; height: 10px; border-radius: 50%; background: var(--orange-yellow-crayola); box-shadow: 0 0 0 4px var(--jet); }
+
+    .timeline-item-title { font-size: var(--fs-6); font-weight: var(--fw-600); color: var(--white-2); margin-bottom: 5px; }
+    .timeline-meta { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 5px; }
+    .timeline-meta span { font-size: var(--fs-8); color: var(--light-gray-70); }
+    .timeline-text { font-size: var(--fs-7); font-weight: var(--fw-300); color: var(--light-gray); line-height: 1.7; }
+
+    .resume-section-title { font-size: var(--fs-6); font-weight: var(--fw-600); color: var(--orange-yellow-crayola); text-transform: uppercase; letter-spacing: 1px; margin: 30px 0 20px; display: flex; align-items: center; gap: 10px; }
+    .resume-section-title::after { content: ''; flex: 1; height: 1px; background: var(--jet); }
+
+    .skills-list { display: flex; flex-direction: column; gap: 15px; }
+    .skill-item .title-wrapper { display: flex; justify-content: space-between; margin-bottom: 6px; }
+    .skill-item .title-wrapper h5 { font-size: var(--fs-7); font-weight: var(--fw-500); color: var(--white-2); }
+    .skill-item .title-wrapper data { font-size: var(--fs-7); color: var(--light-gray-70); }
+    .skill-progress-bg { background: var(--jet); border-radius: 10px; height: 8px; overflow: hidden; }
+    .skill-progress-fill { height: 100%; background: var(--text-gradient-yellow); border-radius: 10px; }
+
+    /* ── Portfolio ── */
+    .filter-list { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 25px; }
+    .filter-item button {
+      color: var(--light-gray-70); font-size: var(--fs-6); font-weight: var(--fw-500);
+      transition: var(--transition-1); padding: 4px 0;
+    }
+    .filter-item button:hover, .filter-item button.active { color: var(--orange-yellow-crayola); }
+
+    .project-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 25px; }
+
+    .project-item { display: none; }
+    .project-item.active { display: block; animation: fade 0.4s ease; }
+
+    .project-img {
+      background: var(--jet);
+      border-radius: 16px; overflow: hidden;
+      margin-bottom: 15px; aspect-ratio: 3/2;
+      position: relative;
+    }
+    .project-img img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition-2); }
+    .project-img:hover img { transform: scale(1.05); }
+    .project-img .project-item-icon-box {
+      position: absolute; inset: 0;
+      background: hsla(0,0%,0%,0.5);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: var(--transition-1);
+    }
+    .project-img:hover .project-item-icon-box { opacity: 1; }
+    .project-item-icon-box ion-icon { color: var(--orange-yellow-crayola); font-size: 30px; }
+
+    .project-title { font-size: var(--fs-6); font-weight: var(--fw-600); color: var(--white-2); margin-bottom: 5px; }
+    .project-category { font-size: var(--fs-7); color: var(--light-gray-70); font-weight: var(--fw-300); text-transform: capitalize; }
+
+    /* ── Certifications ── */
+    .cert-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
+    .cert-item {
+      background: var(--border-gradient-onyx);
+      border-radius: 14px; overflow: hidden;
+      box-shadow: var(--shadow-3);
+      transition: var(--transition-1);
+    }
+    .cert-item:hover { background: var(--bg-gradient-yellow-2); }
+    .cert-item a { display: block; }
+    .cert-item img { width: 100%; aspect-ratio: 3/2; object-fit: cover; }
+    .cert-info { padding: 15px; }
+    .cert-info .cert-company { font-size: var(--fs-8); color: var(--orange-yellow-crayola); margin-bottom: 4px; }
+    .cert-info .cert-date { font-size: var(--fs-8); color: var(--light-gray-70); margin-bottom: 6px; }
+    .cert-info h4 { font-size: var(--fs-7); font-weight: var(--fw-600); color: var(--white-2); margin-bottom: 6px; }
+    .cert-info p { font-size: var(--fs-8); color: var(--light-gray); line-height: 1.5; }
+
+    /* ── Contact ── */
+    .contact-form { display: flex; flex-direction: column; gap: 16px; max-width: 600px; }
+    .form-input {
+      background: var(--bg-gradient-jet);
+      color: var(--white-2); font-size: var(--fs-7); font-family: var(--ff-poppins);
+      padding: 13px 20px; border: 1px solid var(--jet); border-radius: 14px;
+      outline: none; transition: var(--transition-1);
+    }
+    .form-input:focus { border-color: var(--orange-yellow-crayola); }
+    .form-input::placeholder { color: var(--light-gray-70); }
+    textarea.form-input { resize: vertical; min-height: 120px; }
+
+    .form-btn {
+      background: var(--border-gradient-onyx);
+      color: var(--orange-yellow-crayola);
+      font-size: var(--fs-7); font-weight: var(--fw-600);
+      text-transform: uppercase; letter-spacing: 1px;
+      padding: 14px 30px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      box-shadow: var(--shadow-3);
+      transition: var(--transition-1);
+      align-self: flex-start;
+    }
+    .form-btn:hover { background: var(--bg-gradient-yellow-1); color: var(--smoky-black); }
+
+    @media (max-width: 700px) {
+      .service-list { grid-template-columns: 1fr; }
+      .right-panel { padding: 20px; }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+
+    <!-- ══ SIDEBAR ══ -->
+    <aside class="sidebar">
+      <div class="sidebar-info">
+        <figure class="avatar-box">
+          <img src="https://farooqshah.devsil.com/assets/images/farooq .jpeg" alt="Farooq Shah" width="80">
+        </figure>
+        <div class="info-content">
+          <h1 class="name">Farooq Shah</h1>
+          <p class="title">Data Scientist &amp; ML Engineer</p>
+        </div>
+        <button class="info-more-btn" onclick="toggleContacts(this)">
+          <span>Show Contacts</span>
+          <ion-icon name="chevron-down"></ion-icon>
+        </button>
+      </div>
+
+      <div class="sidebar-info-more" id="sidebarContacts">
+        <ul class="contacts-list">
+          <li class="contact-item">
+            <div class="contact-icon"><ion-icon name="mail-outline"></ion-icon></div>
+            <div class="contact-info">
+              <p class="contact-title">Email</p>
+              <a href="mailto:hayatshahm15@gmail.com" class="contact-link">hayatshahm15@gmail.com</a>
+            </div>
+          </li>
+          <li class="contact-item">
+            <div class="contact-icon"><ion-icon name="phone-portrait-outline"></ion-icon></div>
+            <div class="contact-info">
+              <p class="contact-title">Phone</p>
+              <a href="tel:+923708017350">+92 370 8017350</a>
+            </div>
+          </li>
+          <li class="contact-item">
+            <div class="contact-icon"><ion-icon name="calendar-outline"></ion-icon></div>
+            <div class="contact-info">
+              <p class="contact-title">Birthday</p>
+              <time>January 01, 2002</time>
+            </div>
+          </li>
+          <li class="contact-item">
+            <div class="contact-icon"><ion-icon name="location-outline"></ion-icon></div>
+            <div class="contact-info">
+              <p class="contact-title">Location</p>
+              <address>Abbottabad, KPK, Pakistan</address>
+            </div>
+          </li>
+        </ul>
+        <div class="separator"></div>
+        <ul class="social-list">
+          <li class="social-item"><a href="#"><ion-icon name="logo-twitter"></ion-icon></a></li>
+          <li class="social-item"><a href="#"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+          <li class="social-item"><a href="#"><ion-icon name="logo-github"></ion-icon></a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- ══ RIGHT PANEL ══ -->
+    <div>
+      <nav>
+        <ul class="navbar-list">
+          <li><button class="navbar-link active" onclick="switchTab('about', this)">About</button></li>
+          <li><button class="navbar-link" onclick="switchTab('resume', this)">Resume</button></li>
+          <li><button class="navbar-link" onclick="switchTab('portfolio', this)">Portfolio</button></li>
+          <li><button class="navbar-link" onclick="switchTab('certifications', this)">Certifications</button></li>
+          <li><button class="navbar-link" onclick="switchTab('contact', this)">Contact</button></li>
+        </ul>
+      </nav>
+
+      <div class="right-panel">
+
+        <!-- ── ABOUT ── -->
+        <article id="about" class="active">
+          <h2 class="article-title">About me</h2>
+          <p class="about-text">
+            Sociology undergrad '26 based in Abbottabad, Pakistan. I work in data science,
+            machine learning, and AI automation — turning raw data into decisions that actually matter.
+            Previously Research Assistant and Data Analyst Intern at Hazara University.
+            Actively freelancing on Upwork and open to new projects worldwide. My goal is to
+            build AI solutions that solve real business problems — from predictive ML models
+            and computer vision to generative AI apps and automated pipelines.
+          </p>
+
+          <p class="service-title">What I'm doing</p>
+          <ul class="service-list">
+            <li class="service-item">
+              <div class="service-icon-box"><img src="https://farooqshah.devsil.com/assets/images/icon-design.svg" alt="icon"></div>
+              <h4 class="service-item-title">Data Analytics</h4>
+              <p class="service-item-text">Analyzing complex datasets and solving business problems through advanced analytics and visualization.</p>
+            </li>
+            <li class="service-item">
+              <div class="service-icon-box"><img src="https://farooqshah.devsil.com/assets/images/icon-dev.svg" alt="icon"></div>
+              <h4 class="service-item-title">Machine Learning</h4>
+              <p class="service-item-text">Training accurate ML models with precision tuning, removing overfitting and ensuring robustness.</p>
+            </li>
+            <li class="service-item">
+              <div class="service-icon-box"><img src="https://farooqshah.devsil.com/assets/images/icon-app.svg" alt="icon"></div>
+              <h4 class="service-item-title">Computer Vision</h4>
+              <p class="service-item-text">Giving AI the power to see and interpret visual data using OpenCV and deep learning.</p>
+            </li>
+            <li class="service-item">
+              <div class="service-icon-box"><img src="https://farooqshah.devsil.com/assets/images/icon-photo.svg" alt="icon"></div>
+              <h4 class="service-item-title">Generative AI</h4>
+              <p class="service-item-text">Fine-tuning LLMs and building functional AI apps for special purposes and business needs.</p>
+            </li>
+            <li class="service-item">
+              <div class="service-icon-box"><img src="https://farooqshah.devsil.com/assets/images/icon-dev.svg" alt="icon"></div>
+              <h4 class="service-item-title">AI Agents Development</h4>
+              <p class="service-item-text">Building intelligent agents that automate repetitive and logical tasks autonomously.</p>
+            </li>
+            <li class="service-item">
+              <div class="service-icon-box"><img src="https://farooqshah.devsil.com/assets/images/icon-design.svg" alt="icon"></div>
+              <h4 class="service-item-title">MLOps / AWS</h4>
+              <p class="service-item-text">Deploying production-ready AI models on AWS cloud infrastructure with CI/CD pipelines.</p>
+            </li>
+          </ul>
+
+          <p class="testimonials-title">Testimonials</p>
+          <ul class="testimonials-list">
+            <li class="testimonials-item">
+              <img class="testimonials-avatar" src="https://farooqshah.devsil.com/assets/images/avatar-1.png" alt="Maaz Ali">
+              <h4 class="testimonials-item-title">Maaz Ali</h4>
+              <p class="testimonials-text">Farooq's ability to turn raw data into actionable insights is truly impressive. He handled our data preprocessing and analysis with precision.</p>
+            </li>
+            <li class="testimonials-item">
+              <img class="testimonials-avatar" src="https://farooqshah.devsil.com/assets/images/avatar-2.png" alt="Jessica Miller">
+              <h4 class="testimonials-item-title">Jessica Miller</h4>
+              <p class="testimonials-text">When it comes to end-to-end data solutions, Farooq is the go-to professional. I was amazed by how smoothly the process went.</p>
+            </li>
+            <li class="testimonials-item">
+              <img class="testimonials-avatar" src="https://farooqshah.devsil.com/assets/images/avatar-3.png" alt="Emily Evans">
+              <h4 class="testimonials-item-title">Emily Evans</h4>
+              <p class="testimonials-text">Our collaboration with Farooq was a game-changer. He not only brought strong technical skills but also a deep understanding of our business.</p>
+            </li>
+            <li class="testimonials-item">
+              <img class="testimonials-avatar" src="https://farooqshah.devsil.com/assets/images/avatar-4.png" alt="Henry William">
+              <h4 class="testimonials-item-title">Henry William</h4>
+              <p class="testimonials-text">Farooq stands out for his holistic approach. He didn't just provide data models — he ensured they were fully integrated into our system.</p>
+            </li>
+          </ul>
+
+          <p class="clients-title">Clients</p>
+          <ul class="clients-list">
+            <li class="clients-item"><a href="#"><img src="https://farooqshah.devsil.com/assets/images/logo-1-color.png" alt="client"></a></li>
+            <li class="clients-item"><a href="#"><img src="https://farooqshah.devsil.com/assets/images/logo-2-color.png" alt="client"></a></li>
+            <li class="clients-item"><a href="#"><img src="https://farooqshah.devsil.com/assets/images/logo-3-color.png" alt="client"></a></li>
+            <li class="clients-item"><a href="#"><img src="https://farooqshah.devsil.com/assets/images/logo-4-color.png" alt="client"></a></li>
+            <li class="clients-item"><a href="#"><img src="https://farooqshah.devsil.com/assets/images/logo-5-color.png" alt="client"></a></li>
+            <li class="clients-item"><a href="#"><img src="https://farooqshah.devsil.com/assets/images/logo-6-color.png" alt="client"></a></li>
+          </ul>
+        </article>
+
+        <!-- ── RESUME ── -->
+        <article id="resume">
+          <h2 class="article-title">Resume</h2>
+
+          <div class="resume-section-title">Experience</div>
+          <ol class="timeline-list">
+            <li class="timeline-item">
+              <h4 class="timeline-item-title">Research Assistant — Hazara University</h4>
+              <div class="timeline-meta"><span>Jan 2025 — May 2025</span></div>
+              <p class="timeline-text">Assisted faculty in collecting and analyzing social survey data. Used Python and Excel to clean datasets and prepare summary reports. Contributed to drafting research papers on local social behaviors and trends.</p>
+            </li>
+            <li class="timeline-item">
+              <h4 class="timeline-item-title">Data Analyst Intern — Hazara University</h4>
+              <div class="timeline-meta"><span>Jun 2025 — Aug 2025</span></div>
+              <p class="timeline-text">Worked on quantitative analysis for student attendance and academic performance. Applied statistical methods to identify trends and patterns in student data.</p>
+            </li>
+            <li class="timeline-item">
+              <h4 class="timeline-item-title">Sociology Research Project — Hazara University</h4>
+              <div class="timeline-meta"><span>Sep 2025 — Dec 2025</span></div>
+              <p class="timeline-text">Conducted research on social behavior in urban communities using surveys and interviews. Organized and visualized data using Python and Excel.</p>
+            </li>
+          </ol>
+
+          <div class="resume-section-title">Education</div>
+          <ol class="timeline-list">
+            <li class="timeline-item">
+              <h4 class="timeline-item-title">Hazara University Mansehra</h4>
+              <div class="timeline-meta"><span>2022 — 2026</span></div>
+              <p class="timeline-text">BS in Sociology — studying social behavior and research methods while simultaneously mastering data science and machine learning independently.</p>
+            </li>
+            <li class="timeline-item">
+              <h4 class="timeline-item-title">Iqra Academy Abbottabad</h4>
+              <div class="timeline-meta"><span>2020 — 2022</span></div>
+              <p class="timeline-text">FSC Pre-engineering studies providing the analytical foundation for future data science work.</p>
+            </li>
+          </ol>
+
+          <div class="resume-section-title">My Skills</div>
+          <ul class="skills-list">
+            <li class="skill-item"><div class="title-wrapper"><h5>Data Visualization</h5><data value="90">90%</data></div><div class="skill-progress-bg"><div class="skill-progress-fill" style="width:90%"></div></div></li>
+            <li class="skill-item"><div class="title-wrapper"><h5>Data Analytics</h5><data value="80">80%</data></div><div class="skill-progress-bg"><div class="skill-progress-fill" style="width:80%"></div></div></li>
+            <li class="skill-item"><div class="title-wrapper"><h5>Machine Learning</h5><data value="70">70%</data></div><div class="skill-progress-bg"><div class="skill-progress-fill" style="width:70%"></div></div></li>
+            <li class="skill-item"><div class="title-wrapper"><h5>Computer Vision</h5><data value="50">50%</data></div><div class="skill-progress-bg"><div class="skill-progress-fill" style="width:50%"></div></div></li>
+            <li class="skill-item"><div class="title-wrapper"><h5>Generative AI</h5><data value="50">50%</data></div><div class="skill-progress-bg"><div class="skill-progress-fill" style="width:50%"></div></div></li>
+            <li class="skill-item"><div class="title-wrapper"><h5>AI Automation</h5><data value="50">50%</data></div><div class="skill-progress-bg"><div class="skill-progress-fill" style="width:50%"></div></div></li>
+            <li class="skill-item"><div class="title-wrapper"><h5>AI Agents Development</h5><data value="50">50%</data></div><div class="skill-progress-bg"><div class="skill-progress-fill" style="width:50%"></div></div></li>
+            <li class="skill-item"><div class="title-wrapper"><h5>MLOps / AWS</h5><data value="50">50%</data></div><div class="skill-progress-bg"><div class="skill-progress-fill" style="width:50%"></div></div></li>
+          </ul>
+        </article>
+
+        <!-- ── PORTFOLIO ── -->
+        <article id="portfolio">
+          <h2 class="article-title">Portfolio</h2>
+          <ul class="filter-list">
+            <li class="filter-item"><button class="active" onclick="filterProjects('all', this)">All</button></li>
+            <li class="filter-item"><button onclick="filterProjects('data analytics', this)">Data Analytics</button></li>
+            <li class="filter-item"><button onclick="filterProjects('machine learning', this)">Machine Learning</button></li>
+            <li class="filter-item"><button onclick="filterProjects('computer vision', this)">Computer Vision</button></li>
+            <li class="filter-item"><button onclick="filterProjects('generative ai', this)">Generative AI</button></li>
+          </ul>
+
+          <ul class="project-list">
+            <li class="project-item active" data-cat="machine learning">
+              <a href="https://github.com/itexpert67/devsil-mentorship/tree/main/week%2010" target="_blank">
+                <figure class="project-img">
+                  <img src="https://farooqshah.devsil.com/assets/images/social_media_card.png" alt="Advanced Social Media Engagement Prediction">
+                  <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
+                </figure>
+                <h3 class="project-title">Advanced Social Media Engagement Prediction</h3>
+                <p class="project-category">Machine Learning</p>
+              </a>
+            </li>
+            <li class="project-item active" data-cat="machine learning">
+              <a href="https://farooq-eda-tool.streamlit.app" target="_blank">
+                <figure class="project-img">
+                  <img src="https://farooqshah.devsil.com/assets/images/card_autoeda.png" alt="Auto EDA">
+                  <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
+                </figure>
+                <h3 class="project-title">Auto EDA — Automated Exploratory Data Analysis Tool</h3>
+                <p class="project-category">Machine Learning</p>
+              </a>
+            </li>
+            <li class="project-item active" data-cat="machine learning">
+              <a href="https://github.com/itexpert67/devsil-mentorship/tree/main/week%2008" target="_blank">
+                <figure class="project-img">
+                  <img src="https://farooqshah.devsil.com/assets/images/er_card.png" alt="Hospital ER">
+                  <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
+                </figure>
+                <h3 class="project-title">Hospital Emergency Room Performance &amp; Prediction Project</h3>
+                <p class="project-category">Machine Learning</p>
+              </a>
+            </li>
+            <li class="project-item active" data-cat="machine learning">
+              <a href="https://github.com/itexpert67/devsil-mentorship/tree/main/week%2007" target="_blank">
+                <figure class="project-img">
+                  <img src="https://farooqshah.devsil.com/assets/images/card_employee_attrition.png" alt="Employee Attrition">
+                  <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
+                </figure>
+                <h3 class="project-title">Employee Attrition Prediction System</h3>
+                <p class="project-category">Machine Learning</p>
+              </a>
+            </li>
+            <li class="project-item active" data-cat="machine learning">
+              <a href="https://github.com/itexpert67/devsil-mentorship/tree/main/week%2006" target="_blank">
+                <figure class="project-img">
+                  <img src="https://farooqshah.devsil.com/assets/images/card_tbm_penetration.png" alt="TBM Penetration">
+                  <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
+                </figure>
+                <h3 class="project-title">TBM Penetration Rate Project</h3>
+                <p class="project-category">Machine Learning</p>
+              </a>
+            </li>
+            <li class="project-item active" data-cat="data analytics">
+              <a href="https://github.com/itexpert67/devsil-mentorship/tree/main/week%2005" target="_blank">
+                <figure class="project-img">
+                  <img src="https://farooqshah.devsil.com/assets/images/card_heart_disease.png" alt="Heart Disease">
+                  <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
+                </figure>
+                <h3 class="project-title">Heart Diseases Cleaned Dataset</h3>
+                <p class="project-category">Data Analytics</p>
+              </a>
+            </li>
+            <li class="project-item active" data-cat="machine learning">
+              <a href="https://github.com/itexpert67/devsil-mentorship/tree/main/week%2004" target="_blank">
+                <figure class="project-img">
+                  <img src="https://farooqshah.devsil.com/assets/images/card_covid19.png" alt="Covid-19">
+                  <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
+                </figure>
+                <h3 class="project-title">Covid-19 Country wise Cleaned Dataset</h3>
+                <p class="project-category">Machine Learning</p>
+              </a>
+            </li>
+            <li class="project-item active" data-cat="data analytics">
+              <a href="https://github.com/itexpert67/devsil-mentorship/tree/main/week%2003" target="_blank">
+                <figure class="project-img">
+                  <img src="https://farooqshah.devsil.com/assets/images/card_apps_prices.png" alt="Apps Prices">
+                  <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
+                </figure>
+                <h3 class="project-title">Apps Prices &amp; Ratings</h3>
+                <p class="project-category">Data Analytics</p>
+              </a>
+            </li>
+            <li class="project-item active" data-cat="data analytics">
+              <a href="https://github.com/itexpert67/devsil-mentorship/tree/main/week%2002" target="_blank">
+                <figure class="project-img">
+                  <img src="https://farooqshah.devsil.com/assets/images/card_mobile_brands.png" alt="Mobile Brands">
+                  <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
+                </figure>
+                <h3 class="project-title">Mobile Brands Prices Analysis</h3>
+                <p class="project-category">Data Analytics</p>
+              </a>
+            </li>
+            <li class="project-item active" data-cat="data analytics">
+              <a href="https://github.com/itexpert67/devsil-mentorship/tree/main/week%2001" target="_blank">
+                <figure class="project-img">
+                  <img src="https://farooqshah.devsil.com/assets/images/card_week1_data.png" alt="Week 1">
+                  <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
+                </figure>
+                <h3 class="project-title">Week 1 Project</h3>
+                <p class="project-category">Data Analytics</p>
+              </a>
+            </li>
+          </ul>
+        </article>
+
+        <!-- ── CERTIFICATIONS ── -->
+        <article id="certifications">
+          <h2 class="article-title">Certifications</h2>
+          <ul class="cert-list">
+            <li class="cert-item">
+              <a href="https://codanics.com/tutor-certificate-2?cert_hash=7e5506d919b0ac9a" target="_blank">
+                <img src="https://farooqshah.devsil.com/assets/images/piccc.webp" alt="Python Ka Chilla">
+                <div class="cert-info">
+                  <p class="cert-company">Codanics</p>
+                  <p class="cert-date">July 7, 2024</p>
+                  <h4>Python Ka Chilla (40-Days)</h4>
+                  <p>Completed 40-day intensive Python bootcamp covering data science fundamentals, pandas, matplotlib, and ML basics.</p>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </article>
+
+        <!-- ── CONTACT ── -->
+        <article id="contact">
+          <h2 class="article-title">Contact</h2>
+          <form class="contact-form" onsubmit="return false;">
+            <input type="text" class="form-input" placeholder="Full Name">
+            <input type="email" class="form-input" placeholder="Email Address">
+            <textarea class="form-input" placeholder="Your Message"></textarea>
+            <button class="form-btn" type="submit">
+              <ion-icon name="paper-plane"></ion-icon>
+              <span>Send Message</span>
+            </button>
+          </form>
+        </article>
+
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function switchTab(id, btn) {
+      document.querySelectorAll('article').forEach(a => a.classList.remove('active'));
+      document.querySelectorAll('.navbar-link').forEach(b => b.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    function filterProjects(cat, btn) {
+      document.querySelectorAll('.filter-item button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.project-item').forEach(item => {
+        if (cat === 'all' || item.dataset.cat === cat) {
+          item.classList.add('active');
+        } else {
+          item.classList.remove('active');
+        }
+      });
+    }
+
+    function toggleContacts(btn) {
+      const more = document.getElementById('sidebarContacts');
+      more.classList.toggle('active');
+      btn.querySelector('span').textContent = more.classList.contains('active') ? 'Hide Contacts' : 'Show Contacts';
+    }
+  </script>
+</body>
+</html>
